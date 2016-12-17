@@ -1,2 +1,3 @@
 # Just don't do the .idea folder, kay?
 **/.idea/*
+**/*.pyc
