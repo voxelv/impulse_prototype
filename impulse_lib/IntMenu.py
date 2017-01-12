@@ -14,7 +14,7 @@ class IntMenu:
             ret_str.append("{}. {}".format(opt_num, opt_info['text']))
         return "\n".join(ret_str)
 
-    def query_user(self):
+    def show(self):
         print self
         while True:
             choice = int(raw_input())

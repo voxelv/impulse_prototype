@@ -1,7 +1,7 @@
 #!/usr/bin/env python
-from impulse_lib import Application, IntMenu
-from impulse_lib.actions import print_text
-# from impulse_lib import interface
+from impulse_lib import Application, IntMenu, EventManager as Events
+from impulse_lib.Actions import print_text
+from impulse_lib.Listener import Listener
 
 do_menu = IntMenu("What would you like to do?", [
     {'text': "Eat a donut", 'action': print_text, 'args': ("ate a donut",)},
@@ -15,13 +15,19 @@ class ImpulsePrototype(Application):
 
     def __init__(self):
         super(ImpulsePrototype, self).__init__()
+
+        wow_listener = Listener("INIT")
+
+        Events.add_listener(wow_listener)
+        Events.debug_listeners()
+
         print "Hello world"
 
     def setup(self):
         print "NOW HEAR THIS! THE APP IS SET UP!"
 
     def loop(self):
-        do_menu.query_user()
+        do_menu.show()
 
         if self.counter > 9:
             self.done()
