@@ -70,29 +70,12 @@ class ContinuousGrid:
 def _test_ContinuousGrid():
     results = []
 
-#TODO REWRITE ALL THIS AFTER STUFF
     size_tests = [
         {'default': "_", 'coords': [], 'objects': [], 'exp_str': ""},
-        {'default': "_", 'coords': [(1, 1)], 'objects': ["X"], 'exp_str': "_X\n__\n"},
-        {'default': "_", 'coords': [(2, 1)], 'objects': ["X"], 'exp_str': "X\n"},
-        {'default': "_", 'coords': [(1, 2)], 'objects': ["X"],
-         'exp_str':
-             "_X\n"
-             "__\n"
-             "__\n"},
-        {'default': "_", 'coords': [(2, 2)], 'objects': ["X"],
-         'exp_str':
-             "__X\n"
-             "___\n"
-             "___\n"},
-        {'default': "_", 'coords': [(5, 5)], 'objects': ["X"],
-         'exp_str':
-             "_____X\n"
-             "______\n"
-             "______\n"
-             "______\n"
-             "______\n"
-             "______\n"},
+        {'default': "_", 'coords': [(0, 0)], 'objects': ["X"], 'exp_str': "X\n"},
+        {'default': "_", 'coords': [(1, 1)], 'objects': ["X"], 'exp_str': "X\n"},
+        {'default': "_", 'coords': [(-1, -1)], 'objects': ["X"], 'exp_str': "X\n"},
+        {'default': "_", 'coords': [(7, 7)], 'objects': ["X"], 'exp_str': "X\n"},
     ]
 
     for test_num, size_test in enumerate(size_tests):
@@ -107,13 +90,13 @@ def _test_ContinuousGrid():
             results.append("SIZE TEST {}: FAIL".format(test_num))
 
     io_tests = [
-        {'default': "_", 'coords': [(1, 1), (0, 1)], 'objects': ["X", "Y"], 'full_str': "YX\n__\n",
-         'pop_coords': [(1, 1), (0, 1)], 'exp_val': ["X", "Y"], 'exp_str': ["Y\n_\n", ""]},
+        {'default': "_", 'coords': [(1, 1), (0, 1)], 'objects': ["X", "Y"], 'full_str': "YX\n",
+         'pop_coords': [(1, 1), (0, 1)], 'exp_val': ["X", "Y"], 'exp_str': ["Y\n", ""]},
         {'default': "_", 'coords': [(20, 1), (5, 0)], 'objects': ["X", "Y"],
          'full_str':
-             "____________________X\n"
-             "_____Y_______________\n",
-         'pop_coords': [(20, 1), (5, 0)], 'exp_val': ["X", "Y"], 'exp_str': ["_____Y\n", ""]},
+             "_______________X\n"
+             "Y_______________\n",
+         'pop_coords': [(20, 1), (5, 0)], 'exp_val': ["X", "Y"], 'exp_str': ["Y\n", ""]},
     ]
 
     for test_num, io_test in enumerate(io_tests):
