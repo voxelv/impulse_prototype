@@ -1,5 +1,8 @@
 #!/usr/bin/env python
-from impulse_lib import Application, IntMenu, EventManager as Events
+from impulse_lib.Event import Event
+from impulse_lib.IntMenu import IntMenu
+from impulse_lib.Application import Application
+from impulse_lib.EventManager import EventManager as Events
 from impulse_lib.Actions import print_text
 from impulse_lib.Listener import Listener
 
@@ -16,10 +19,15 @@ class ImpulsePrototype(Application):
     def __init__(self):
         super(ImpulsePrototype, self).__init__()
 
-        wow_listener = Listener("INIT")
+        class WowListener(Listener):
+            def run(self, event):
+                print "HELLO from WowListener!"
+                print "event: {}".format(str(event))
+        wow_listener = WowListener("INIT")
 
         Events.add_listener(wow_listener)
         Events.debug_listeners()
+        Events.fire(Event("INIT"))
 
         print "Hello world"
 

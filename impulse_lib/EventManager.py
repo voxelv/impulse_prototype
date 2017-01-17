@@ -18,7 +18,7 @@ class EventManager:
 
     def fire(self, event):
         for listener in self.listeners:
-            if listener.event_type == event.type:
+            if listener.event_type == event.event_type:
                 listener.run(event)
 
 EventManager = EventManager()
