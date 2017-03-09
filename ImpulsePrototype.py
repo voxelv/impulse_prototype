@@ -1,12 +1,13 @@
 #!/usr/bin/env python
-from impulse_lib import Application, IntMenu, EventManager as Events
-from impulse_lib.Actions import print_text
-from impulse_lib.Listener import Listener
+# from impulse_lib import Application, IntMenu, EventManager as Events
+# from impulse_lib.Actions import print_text
+# from impulse_lib.Listener import Listener
+from impulse_lib import *
 
 do_menu = IntMenu("What would you like to do?", [
-    {'text': "Eat a donut", 'action': print_text, 'args': ("ate a donut",)},
-    {'text': "Fly a kite", 'action': print_text, 'args': ("flew a kite",)},
-    {'text': "Create a module", 'action': print_text, 'args': ("created a module",)},
+    {'text': "Eat a donut", 'action': print_lines, 'args': ("ate a donut",)},
+    {'text': "Fly a kite", 'action': print_lines, 'args': ("flew a kite",)},
+    {'text': "Create a module", 'action': print_lines, 'args': ("created a module",)},
 ])
 
 
@@ -16,12 +17,10 @@ class ImpulsePrototype(Application):
     def __init__(self):
         super(ImpulsePrototype, self).__init__()
 
-        wow_listener = Listener("INIT")
+        wow_listener = INIT_Listener()
 
-        Events.add_listener(wow_listener)
-        Events.debug_listeners()
-
-        print "Hello world"
+        EventManager.add_listener(wow_listener)
+        EventManager.debug_listeners()
 
     def setup(self):
         print "NOW HEAR THIS! THE APP IS SET UP!"

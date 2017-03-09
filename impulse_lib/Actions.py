@@ -1,2 +1,2 @@
-def print_text(*args):
-    print args[0]
+def print_lines(*args):
+    print "\n".join(args)

@@ -20,8 +20,8 @@ class Application(object):
 
     @abstractmethod
     def setup(self):
-        pass
+        raise NotImplementedError("method 'setup' of Application must be overridden.")
 
     @abstractmethod
     def loop(self):
-        pass
+        raise NotImplementedError("method 'loop' of Application must be overridden.")

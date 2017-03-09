@@ -1,4 +1,4 @@
-from impulse_lib.Listener import Listener
+from impulse_lib.listeners.BaseListener import BaseListener
 
 
 class EventManager:
@@ -8,7 +8,7 @@ class EventManager:
         print "EventManager Initialized"
 
     def add_listener(self, listener):
-        if isinstance(listener, Listener):
+        if isinstance(listener, BaseListener):
             self.listeners.append(listener)
         else:
             raise TypeError("Expected type 'Listener' for method: add_listener(listener)")

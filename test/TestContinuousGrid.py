@@ -3,6 +3,10 @@ from impulse_lib.ContinuousGrid import ContinuousGrid
 
 
 class TestContinuousGrid(TestCase):
+    def test_info(self):
+        g = ContinuousGrid(default="")
+        print g.__doc__
+
     def test_default_param(self):
         g = ContinuousGrid(default="*")
         g.set(0, 0, "-")
@@ -45,6 +49,10 @@ class TestContinuousGrid(TestCase):
         actual = g.get(1, 1)
         expect = "_"
         self.assertEqual(actual, expect, "FAILED: get returned {}, expected {}".format(actual, expect))
+        g.set(100, -100, "BANANAS")
+        expect = "BANANAS"
+        actual = g.get(100, -100)
+        self.assertEqual(actual, expect, "FAILED: get returned {}, expected {} grid:\n{}".format(actual, expect, g.__str__()))
 
     def test_pop(self):
         g = ContinuousGrid("_")

@@ -15,10 +15,10 @@ class IntMenu:
         return "\n".join(ret_str)
 
     def show(self):
-        print self
         while True:
+            print self
             choice = int(raw_input())
-            if isinstance(choice, int):
-                if choice in self.options.keys():
-                    self.options[choice]['action'](*self.options[choice]['args'])
-                    break
+            if isinstance(choice, int) and choice in self.options.keys():
+                choice = int(choice)
+                self.options[choice]['action'](*self.options[choice]['args'])
+                break
