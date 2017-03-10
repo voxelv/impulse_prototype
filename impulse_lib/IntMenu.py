@@ -17,7 +17,12 @@ class IntMenu:
     def show(self):
         while True:
             print self
-            choice = int(raw_input())
+            raw = raw_input()
+            if raw.isdigit():
+                choice = int(raw)
+            else:
+                return
+
             if isinstance(choice, int) and choice in self.options.keys():
                 choice = int(choice)
                 self.options[choice]['action'](*self.options[choice]['args'])
